@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Builder_Pattern.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,13 @@ namespace Builder_Pattern.Builders
     {
         // TODO#1: Add methods for following steps
         // - Setting broth
+        void SetBroth();
         // - Setting noodles
+        void SetNoodles();
         // - Adding toppings
+        void AddTopping();
         // - Adding Extras
-
+        void AddExtra();
         /// <summary>
         /// Returns the value of build RamenBowl
         /// </summary>

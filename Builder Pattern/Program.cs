@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Builder_Pattern.Builders;
+using Builder_Pattern.Models;
+using System;
+using Builder_Pattern;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace Builder_Pattern
 {
@@ -47,11 +52,29 @@ namespace Builder_Pattern
         static void Main(string[] args)
         {
             // TODO#1: Wake up your RamenChef by initializing it
+            RamenChef chef = new RamenChef();
 
-            // TODO#2: Create new RamenBuilder's for each ramen recepies (MisoRamenBuilder, SpicyRamenBuilder, VeganRamenBuilder) 
+            // TODO#2: Create new RamenBuilder's for each ramen recipe (MisoRamenBuilder, SpicyRamenBuilder, VeganRamenBuilder)
+            IRamenBuilder misoRamenBuilder = new MisoRamenBuilder();
+            IRamenBuilder veganRamenBuilder = new VeganRamenBuilder();
+            IRamenBuilder spicyRamenBuilder = new SpicyRamenBuilder();
+
             // TODO#3: Use your RamenChef to prepare (build) each type of ramen (Miso, Spicy, Vegan)
-            // TODO#4: After the RamenCheft has prepared the bowl of ramen, use FinishedBowlOfRamen to get the content of
+            RamenBowl misoRamen = chef.PrepareRamen(misoRamenBuilder);
+            RamenBowl veganRamen = chef.PrepareRamen(veganRamenBuilder);
+            RamenBowl spicyRamen = chef.PrepareRamen(spicyRamenBuilder);
+
+            // TODO#4: After the RamenChef has prepared the bowl of ramen, use FinishedBowlOfRamen to get the content of
             //         the RamenBowl and print it out using WriteLine method
+
+            Console.WriteLine("Miso Ramen:");
+            Console.WriteLine(misoRamen.FinishedBowlOfRamen());
+
+            Console.WriteLine("\nVegan Ramen:");
+            Console.WriteLine(veganRamen.FinishedBowlOfRamen());
+
+            Console.WriteLine("\nSpicy Ramen:");
+            Console.WriteLine(spicyRamen.FinishedBowlOfRamen());
 
         }
     }
